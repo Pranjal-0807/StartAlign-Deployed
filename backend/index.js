@@ -12,7 +12,7 @@ app.use(cors({
     credentials: true
 }));
 
-const authToken = require("./middlewares/auth.middleware");
+const { authToken } = require("./middlewares/auth.middleware");
 const projectRoutes = require("./routes/project.routes")
 const subTaskRoutes = require("./routes/subTask.routes")
 const userRoutes = require("./routes/user.routes")

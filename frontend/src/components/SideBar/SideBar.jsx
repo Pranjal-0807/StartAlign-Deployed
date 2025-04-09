@@ -1,19 +1,16 @@
-import { LogOut, Menu } from "lucide-react";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Menu, LogOut } from "lucide-react";
 import { sideBarIcons } from "../../utils/constants";
-
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = () => {
-    console.log("Logout clicked");
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
     navigate("/account");
-    window.location.reload();
   }
 
   return (

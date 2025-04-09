@@ -7,6 +7,7 @@ exports.uploadFile = async (req, res) => {
         const newFile = new File({
             fileName: req.file.originalname,
             fileUrl: req.file.path, // Cloudinary URL
+            uploadedBy: req.user.id
         });
 
         await newFile.save();
@@ -16,11 +17,18 @@ exports.uploadFile = async (req, res) => {
     }
 }
 
-exports.gelUploadedFiles = async (req, res) => {
+exports.getUploadedFiles = async (req, res) => {
     try {
-        const files = await File.find();
+        let files;
+
+        if (req.user.role === 'admin') {
+            files = await File.find();
+        } else {
+            files = await File.find({ uploadedBy: req.user.id });
+        }
+
         res.json(files);
     } catch (error) {
         res.status(500).json({ message: "Error retrieving files", error });
     }
-}
+};

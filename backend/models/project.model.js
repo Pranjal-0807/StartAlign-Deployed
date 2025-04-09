@@ -27,6 +27,10 @@ const projectSchema = new mongoose.Schema({
         trim: true,
         default: Date.now
     },
+    members: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }],
 }, {
     timestamps: true
 });

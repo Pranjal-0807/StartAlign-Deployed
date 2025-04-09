@@ -2,7 +2,7 @@ const express = require('express');
 const { app, server } = require('./socket/socket');
 const messageRoutes = require('./routes/message.routes');
 const conversationRoutes = require('./routes/conversation.routes');
-const authToken = require('./middlewares/auth.middleware');
+const { authToken } = require('./middlewares/auth.middleware');
 require("./config/db")
 
 app.use(authToken)

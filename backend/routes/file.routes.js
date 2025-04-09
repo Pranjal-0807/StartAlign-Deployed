@@ -2,7 +2,7 @@ const multer = require("multer")
 const router = require("express").Router();
 const cloudinary = require("cloudinary").v2;
 const { CloudinaryStorage } = require("multer-storage-cloudinary")
-const { uploadFile, gelUploadedFiles } = require("../controllers/file.controller");
+const { uploadFile, getUploadedFiles } = require("../controllers/file.controller");
 
 // Multer Storage for Cloudinary
 const storage = new CloudinaryStorage({
@@ -17,7 +17,7 @@ const storage = new CloudinaryStorage({
 const upload = multer({ storage });
 
 // Get All Uploaded Files
-router.get("/", gelUploadedFiles);
+router.get("/", getUploadedFiles);
 
 // Upload File & Save to MongoDB
 router.post("/upload", upload.single("file"), uploadFile);

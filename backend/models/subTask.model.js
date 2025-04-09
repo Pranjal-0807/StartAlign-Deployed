@@ -6,6 +6,7 @@ const subTaskSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    // assignTo = userId mongoose.Schema.Types.ObjectId
     assignedTo: {
         type: String,
         required: true,

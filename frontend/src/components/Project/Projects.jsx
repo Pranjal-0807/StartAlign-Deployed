@@ -12,16 +12,26 @@ const Projects = () => {
   return (
     <>
       {loading && <Loader />}
-      <h1 className="text-3xl font-bold underline text-center">CPMT</h1>
-      <div className="m-4 space-y-4 border p-4 bg-gray-100 rounded-lg shadow-md">
-        {projects.map((project) => (
-          <Link to={`/projects/${project._id}`} key={project._id}>
-            <ProjectSummary project={project} />
+
+      <div className="relative flex justify-center items-center mt-4">
+        <h1 className="text-3xl font-bold underline text-center">CPMT</h1>
+
+        <div className="absolute right-4">
+          <CreateProject />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+        {projects.map((project, index) => (
+          <Link to={`/projects/${project._id}`} key={index}>
+            <ProjectSummary key={index} project={project} />
           </Link>
         ))}
-        <CreateProject />
       </div>
+
     </>
+
+
   );
 };
 

@@ -60,12 +60,14 @@ export const fetchFiles = createAsyncThunk("files/fetchFiles", async (_, { rejec
 export const uploadFile = createAsyncThunk("files/uploadFile", async (file, { rejectWithValue }) => {
     const formData = new FormData();
     formData.append("file", file);
+    console.log("Form Data", formData.get("file"));
     try {
         const [makeRequest] = useAxios('POST');
         const response = await makeRequest("/files/upload", formData, { "Content-Type": "multipart/form-data" });
+        console.log(response.data);
         return response.data.file;
     } catch (errorMsg) {
+        console.error("Error uploading file:", errorMsg);
         return rejectWithValue("Error uploading file");
-
     }
 });

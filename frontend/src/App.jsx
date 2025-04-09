@@ -11,13 +11,14 @@ import Project from "./components/Project/Project";
 import Projects from "./components/Project/Projects";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "./store/slices/usersSlice";
-import ContactUs from "./components/ContactUs/ContactUs";
 import DashBoard from "./components/DashBoard/DashBoard";
 import ShowFiles from "./components/FileUpload/ShowFiles";
+import ContactUs from "./components/ContactUs/ContactUs";
 import { fetchProjects } from "./store/slices/projectSlice";
 import CreateProject from "./components/Project/CreateProject";
 import { setUser, setLoading, setError } from "./store/slices/authSlice";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ProjectForm from "./components/Project/ProjectForm";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -60,9 +61,9 @@ const App = () => {
             <Route path="/projects" element={<Projects />} />
             <Route path="/dashboard" element={<DashBoard />} />
             {/* <Route path="/settings" element={<h1>Settings</h1>} /> */}
-            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/contact-us" element={<ContactUs/>} />
             <Route path="/projects/:projectId" element={<Project />} />
-            <Route path="/create-project" element={<CreateProject />} />
+            <Route path="/create-project" element={<ProjectForm />} />
           </Route>
         </Routes>
       </Router>

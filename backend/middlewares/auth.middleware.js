@@ -16,7 +16,17 @@ function authToken(req, res, next) {
     });
 }
 
-module.exports = authToken;
+function authRole(...allowedRoles) {
+    return function (req, res, next) {
+        if (!allowedRoles.includes(req.user.role)) {
+            return res.status(400).json({ message: "You are not allowed!!!" });
+        }
+        next();
+    };
+}
+
+module.exports = { authToken, authRole };
+
 
 // {
 //     id: '67b9b5125b858d35dfc34d19',

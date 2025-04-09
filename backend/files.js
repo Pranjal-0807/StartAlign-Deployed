@@ -18,7 +18,7 @@ app.use(express.json());
 require("./config/db.js");
 
 // Auth Middleware
-const authToken = require("./middlewares/auth.middleware.js");
+const { authToken } = require("./middlewares/auth.middleware.js");
 app.use(authToken);
 
 // Cloudinary Config
